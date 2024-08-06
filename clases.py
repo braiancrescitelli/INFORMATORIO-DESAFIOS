@@ -158,7 +158,7 @@ class GestionProducto:
             for producto in self.leer_datos().values():
                 if 'Tecnologia' in producto:
                     print(" ")
-                    print(f"Nombre: {producto['nombre']} - Stock: {producto['stock']} - Precio: {producto['precio']} - Color: {producto['color']} - Tamaño: {producto['tamaño']} - Tecnologia: {producto['Tecnologia']}")
+                    print(f"Nombre: {producto['nombre']} - Stock: {producto['stock']} - Precio: {producto['precio']} - Codigo: {datos_producto['codigoProducto']} - Color: {producto['color']} - Tamaño: {producto['tamaño']} - Tecnologia: {producto['Tecnologia']}")
                     print(" ")
         except Exception as ex:
             import logging
@@ -186,10 +186,14 @@ class GestionProducto:
                                    
                 if str(codigoProducto) in datosProductos:
                     datos_producto = datosProductos[str(codigoProducto)]
-                    datos_base = f"Nombre: {datos_producto['nombre']} - Stock: {datos_producto['stock']} - Precio: {datos_producto['precio']} - Color: {datos_producto['color']} - Tamaño: {datos_producto['tamaño']}"
+                    datos_base = f"Nombre: {datos_producto['nombre']} - Stock: {datos_producto['stock']} - Precio: {datos_producto['precio']} - Codigo: {datos_producto['codigoProducto']} - Color: {datos_producto['color']} - Tamaño: {datos_producto['tamaño']}"
                     if 'Tecnologia' in datos_producto:
                         print(" ")
                         print(f"{datos_base} - Tecnologia: {datos_producto['Tecnologia']}")
+                        print(" ")
+                    elif 'eficiencia' in datos_producto:
+                        print(" ")
+                        print(f"{datos_base} - Eficiencia: {datos_producto['eficiencia']}")
                         print(" ")
                 else :
                     print("La opcion seleccionada debe ser un codigo numerio de la lista...")
