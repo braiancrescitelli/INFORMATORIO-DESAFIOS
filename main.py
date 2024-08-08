@@ -48,7 +48,6 @@ def agregar_producto(gestion):
         print(" Para volver al menu selecciona 0")
 
         opcion2 = input(" Seleccione una opcion: ")
-        verificar_opcion(opcion2)
         if opcion2 == 0 or opcion2  == '0':
             reiniciar()
         elif opcion2 == 1  or opcion2 == '1':
@@ -63,6 +62,7 @@ def agregar_producto(gestion):
             tamaño=str(input("Ingrese el tamaño del Producto: "))
             tecnologia =str(input("Ingrese el tipo de Tecnologia del Producto: "))
             producto = ProductoElectronico(nombre, precio, codigoProducto, stock, color, tamaño, tecnologia)
+            gestion.crear_producto(producto)
         elif opcion2 == 2 or opcion2 == '2':
             limpiar_pantalla()
             print(" ----------- Agregando Producto de Limpieza ----------")
@@ -75,7 +75,13 @@ def agregar_producto(gestion):
             tamaño=str(input("Ingrese el tamaño del Producto: "))
             eficiencia =str(input("Ingrese el tipo de Eficiencia del Producto: "))
             producto = ProductoArtLimpieza(nombre, precio, codigoProducto, stock, color, tamaño, eficiencia)   
-        gestion.crear_producto(producto)
+            gestion.crear_producto(producto)
+        else:
+            print(" ")
+            print("La opcion seleccionada debe ser un numero de la lista...")
+            input("Presione ENTER para continuar...")
+        
+        
 
     except ValueError as e:
         print(f"Error: {e}")
@@ -125,6 +131,7 @@ def mostrar_productos(gestion):
         limpiar_pantalla()
         print("----------- Productos en venta -----------")
         gestion.mostrar_producto()
+        print(" ")
         input("Presione ENTER para continuar")
     except ValueError as e:
         print(f"Error : {e}")
