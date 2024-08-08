@@ -189,14 +189,13 @@ class GestionProducto:
                 if str(codigoProducto) in datosProductos:
                     datos_producto = datosProductos[str(codigoProducto)]
                     datos_base = f"Nombre: {datos_producto['nombre'].capitalize()} - Stock: {datos_producto['stock']} - Precio: {datos_producto['precio']} - Codigo: {datos_producto['codigoProducto']} - Color: {datos_producto['color'].capitalize()} - Tamaño: {datos_producto['tamaño'].capitalize()}"
+
                     if 'Tecnologia' in datos_producto:
                         print(" ")
                         print(f"{datos_base} - Tecnologia: {datos_producto['Tecnologia'].capitalize()}")
-                        print(" ")
                     elif 'Eficiencia' in datos_producto:
                         print(" ")
                         print(f"{datos_base} - Eficiencia: {datos_producto['Eficiencia']}")
-                        print(" ")
                 else :
                     print("La opcion seleccionada debe ser un codigo numerio de la lista...")
 
