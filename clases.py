@@ -156,10 +156,12 @@ class GestionProducto:
     def mostrar_producto(self):
         try:
             for producto in self.leer_datos().values():
-                if 'Tecnologia' in producto:
+                if 'Tecnologia' in producto.keys():
                     print(" ")
-                    print(f"Nombre: {producto['nombre']} - Stock: {producto['stock']} - Precio: {producto['precio']} - Color: {producto['color']} - Tamaño: {producto['tamaño']} - Tecnologia: {producto['Tecnologia']}")
+                    print(f"Nombre: {producto['nombre'].capitalize()} - Stock: {producto['stock']} - Precio: {producto['precio']} - Codigo: {producto['codigoProducto']} Color: {producto['color'].capitalize()} - Tamaño: {producto['tamaño'].capitalize()} - Tecnologia: {producto['Tecnologia'].capitalize()}")
+                if 'Eficiencia' in producto.keys():
                     print(" ")
+                    print(f"Nombre: {producto['nombre'].capitalize()} - Stock: {producto['stock']} - Precio: {producto['precio']} - Codigo: {producto['codigoProducto']} Color: {producto['color'].capitalize()} - Tamaño: {producto['tamaño'].capitalize()} - Eficiencia: {producto['Eficiencia']}")
         except Exception as ex:
             import logging
             logging.error("Ocurrio un error: ", ex, exc_info=True)
@@ -186,10 +188,14 @@ class GestionProducto:
                                    
                 if str(codigoProducto) in datosProductos:
                     datos_producto = datosProductos[str(codigoProducto)]
-                    datos_base = f"Nombre: {datos_producto['nombre']} - Stock: {datos_producto['stock']} - Precio: {datos_producto['precio']} - Color: {datos_producto['color']} - Tamaño: {datos_producto['tamaño']}"
+                    datos_base = f"Nombre: {datos_producto['nombre'].capitalize()} - Stock: {datos_producto['stock']} - Precio: {datos_producto['precio']} - Codigo: {datos_producto['codigoProducto']} - Color: {datos_producto['color'].capitalize()} - Tamaño: {datos_producto['tamaño'].capitalize()}"
                     if 'Tecnologia' in datos_producto:
                         print(" ")
-                        print(f"{datos_base} - Tecnologia: {datos_producto['Tecnologia']}")
+                        print(f"{datos_base} - Tecnologia: {datos_producto['Tecnologia'].capitalize()}")
+                        print(" ")
+                    elif 'Eficiencia' in datos_producto:
+                        print(" ")
+                        print(f"{datos_base} - Eficiencia: {datos_producto['Eficiencia']}")
                         print(" ")
                 else :
                     print("La opcion seleccionada debe ser un codigo numerio de la lista...")
@@ -198,14 +204,21 @@ class GestionProducto:
             elif opcion == 2 or opcion == '2': 
                 limpiar_pantalla()
                 print("---------- Buscando producto por filtro ----------")
-                filtro = str(input(" Seleccione la clave que desea buscar: "))
+                print(" ")
+                filtro = input(" Seleccione la clave que desea buscar: ")
                 for producto in self.leer_datos().values():
-                    if filtro in producto:
-                        if 'Tecnologia' in producto:                        
-                            print(f"Nombre: {producto['nombre']} - Stock: {producto['stock']} - Precio: {producto['precio']} - Color: {producto['color']} - Tamaño: {producto['tamaño']} - Tecnologia: {producto['Tecnologia']}")
-                        elif 'Eficiencia' in producto:
-                            print(f"Nombre: {producto['nombre']} - Stock: {producto['stock']} - Precio: {producto['precio']} - Color: {producto['color']} - Tamaño: {producto['tamaño']} - Eficiencia: {producto['eficiencia']}")
-                    input("Presione ENTER para continuar...")
+                    if filtro in producto.keys():
+                        if 'Tecnologia' in producto.keys():
+                            print(" ")                        
+                            print(f"Nombre: {producto['nombre'].capitalize()} - Stock: {producto['stock']} - Precio: {producto['precio']} - Codigo: {producto['codigoProducto']} - Color: {producto['color'].capitalize()} - Tamaño: {producto['tamaño'].capitalize()} - Tecnologia: {producto['Tecnologia'].capitalize()}")
+                        if 'Eficiencia' in producto.keys():
+                            print(" ")
+                            print(f"Nombre: {producto['nombre'].capitalize()} - Stock: {producto['stock']} - Precio: {producto['precio']} - Codigo: {producto['codigoProducto']} - Color: {producto['color'].capitalize()} - Tamaño: {producto['tamaño'].capitalize()} - Eficiencia: {producto['Eficiencia']}")
+                else:
+                    print(" ")
+                    print("No se encontro la clave que busca...")
+                print(" ")
+                input("Presione ENTER para continuar...")
             else:
                 print("La opcion seleccionada debe ser un numero de la lista...")
                 input("Presiona ENTER para continuar...")
